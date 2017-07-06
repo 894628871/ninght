@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>single page application</title>
+	<style type="text/css">
+		.plum{
+			color: plum;
+			font-size: 24px;
+		}
+		.pink{
+			color: pink;
+		}
+	</style>
+</head>
+<body ng-app="myapp">
+	<!-- ng-app指令初始化一个应用程序 -->
+	<div>
+		<input type="text" ng-model="tet">
+		<p>name is: {{tet}} </p>
+	</div>
+
+	<hr>
+
+<!-- -----------------	ng-bind -->
+	<div ng-init="firstName='hello world'">
+		<p ng-bind="firstName"></p>
+	</div>
+
+	<hr>
+
+
+	<!-- ng-click点击发送到控制台 -->
+	<div ng-controller="login">
+		<input type="text" ng-model="username">
+		<input type="button" value="提交" ng-click="showname()">
+		<p>
+			my name is {{username}}
+		</p>
+	</div>
+
+	<hr>
+	
+	<!-- ng-class修改div元素的类<br> -->
+	<select ng-model="home">
+		<option value="plum">1号</option>
+		<option value="pink">2号</option>
+	</select>
+	<div ng-class="home">
+		<p>闫伟</p>
+	</div>
+
+	<hr>
+
+	<!-- ng-if <br> -->
+	<input type="checkbox" ng-model="myIf" ng-init="myIf=true">
+	<div ng-if="myIf">
+		<p>哼哼哈嘿</p>
+	</div>
+	
+	<hr>
+	
+	
+	<div ng-hide="true">
+		隐藏
+	</div>
+	<div ng-show="true">
+		显示
+	</div>
+
+	<hr>
+
+<!-- 	ng-repeat用于循环 -->
+	<div ng-init="colors=['1','2','3']">
+		<p>循环的颜色</p>
+		<ul>
+			<li ng-repeat="color in colors">
+				{{color}}
+			</li>
+		</ul>
+	</div>
+
+	<hr>
+	
+	<!-- ng-init初始化创建一个变量 -->
+	<div ng-init="default='闫伟'">
+		<p>请输入您的姓名：</p>
+		<input type="text" ng-model="default">
+		<p>学生:{{default}} </p>
+	</div>
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script>
+		var app = angular.module('myapp',[]);
+		app.controller("login",function($scope) {
+			$scope.username="lily";
+			$scope.showname=function () {
+				console.log($scope.username);
+			}
+		})
+	</script>
+</body>
+</html>
